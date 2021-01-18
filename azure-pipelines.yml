@@ -21,3 +21,13 @@ steps:
     backendAzureRmStorageAccountName: 'storageaccchanterraform'
     backendAzureRmContainerName: 'terraformteststate'
     backendAzureRmKey: 'terraformtest.tfstate'
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'SPHotmailaccount'
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'SPHotmailaccount'
