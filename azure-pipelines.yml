@@ -29,5 +29,5 @@ steps:
 - task: TerraformTaskV1@0
   inputs:
     provider: 'azurerm'
-    command: 'apply'
+    command: 'destroy'
     environmentServiceNameAzureRM: 'SPHotmailaccount'
