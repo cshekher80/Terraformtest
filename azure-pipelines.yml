@@ -12,22 +12,20 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-- task: TerraformTaskV1@0
+- task: TerraformCLI@0
   inputs:
-    provider: 'azurerm'
     command: 'init'
+    backendType: 'azurerm'
     backendServiceArm: 'SPHotmailaccount'
+    ensureBackend: true
     backendAzureRmResourceGroupName: 'terraform-backed-rg'
+    backendAzureRmResourceGroupLocation: 'West Europe'
     backendAzureRmStorageAccountName: 'storageaccchanterraform'
-    backendAzureRmContainerName: 'terraformteststate'
+    backendAzureRmContainerName: 'terraformtest'
     backendAzureRmKey: 'terraformtest.tfstate'
-- task: TerraformTaskV1@0
+    allowTelemetryCollection: true
+- task: TerraformCLI@0
   inputs:
-    provider: 'azurerm'
-    command: 'plan'
-    environmentServiceNameAzureRM: 'SPHotmailaccount'
-- task: TerraformTaskV1@0
-  inputs:
-    provider: 'azurerm'
-    command: 'destroy'
-    environmentServiceNameAzureRM: 'SPHotmailaccount'
+    command: 'apply'
+    environmentServiceName: 'SPHotmailaccount'
+    allowTelemetryCollection: true
