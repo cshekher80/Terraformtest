@@ -22,10 +22,10 @@ steps:
     backendAzureRmResourceGroupLocation: 'West Europe'
     backendAzureRmStorageAccountName: 'storageaccchanterraform'
     backendAzureRmContainerName: 'terraformtest'
-    backendAzureRmKey: 'terraformtest.tfstate'
+    backendAzureRmKey: 'terraform.tfstate'
     allowTelemetryCollection: true
 - task: TerraformCLI@0
   inputs:
-    command: 'destroy'
+    command: 'apply'
     environmentServiceName: 'SPHotmailaccount'
     allowTelemetryCollection: true
